@@ -2,9 +2,10 @@ const mongoose = require("mongoose")
 const router = require("express").Router()
 
 const Candle = require("../models/Candle.model")
-const User = require("../models/User.model")
 
-router.post("/", (req, res, next) => {
+const { isAuthenticated } = require("./../middleware/jwt.middleware")
+
+router.post("/", isAuthenticated, (req, res, next) => {
 
     const { name, description, price, aroma, image } = req.body
     
@@ -37,7 +38,7 @@ router.get("/:candleId"), (req, res, next) => {
         .catch(err=>next(err))
 }
 
-router.put("/:candleId"), (req, res, next) => {
+router.put("/:candleId"), isAuthenticated, (req, res, next) => {
 
     const { candleId } = req.params
     const { name, description, price, aroma, image } = req.body
@@ -53,7 +54,7 @@ router.put("/:candleId"), (req, res, next) => {
         .catch(err=>next(err))
 }
 
-router.delete("/:candleId"), (req, res, next) => {
+router.delete("/:candleId"), isAuthenticated, (req, res, next) => {
 
     const { candleId } = req.params
 

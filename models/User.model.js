@@ -4,19 +4,15 @@ const userSchema = new Schema(
   {
     name: {
       type: String, 
-      required: [true, "Name is required."],
     },
     lastName: {
       type: String,
-      required:[true, "Lastname is required."],
     },
     address: {
       type: String,
-      required: [true, "Address is required."],
     },
     phoneNumber: {
       type: String,
-      required:true,
     },
     email: {
       type: String,

@@ -4,5 +4,7 @@ module.exports = app => {
 
   const userRouter = require("./user.routes")
   app.use("/api/user", userRouter)
-
+  
+  const authRoutes = require("./auth.routes")
+  app.use("/api/auth", authRoutes)
 }

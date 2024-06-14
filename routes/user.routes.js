@@ -2,7 +2,14 @@ const mongoose = require("mongoose")
 const router = require("express").Router()
 
 const User = require("../models/User.model")
-const Candle = require("../models/Candle.model")
+
+router.get("/", (req, res, next) => {
+
+    User
+        .find()
+        .then(allUsers => res.json(allUsers))
+        .catch(err=>next(err))
+})
 
 router.get("/:userId", (req, res, next) => {
 
@@ -19,7 +26,7 @@ router.get("/:userId", (req, res, next) => {
         .catch(err =>next(err))
 })
 
-router.put("userId", (req, res, next) => {
+router.put("/:userId", (req, res, next) => {
 
     const { userId } = req.params
     const { name, lastName, address, phoneNumber, email, password } = req.body
@@ -35,7 +42,7 @@ router.put("userId", (req, res, next) => {
         .catch(err=>next(err))
 })
 
-router.delete("userId", (req, res, next) => {
+router.delete("/:userId", (req, res, next) => {
 
     const { userId } = req.params
 
