@@ -5,7 +5,7 @@ const Candle = require("../models/Candle.model")
 
 const { isAuthenticated } = require("./../middleware/jwt.middleware")
 
-router.post("/", isAuthenticated, (req, res, next) => {
+router.post("/", (req, res, next) => {
 
     const { name, description, price, aroma, image } = req.body
     
