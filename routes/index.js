@@ -1,4 +1,7 @@
 module.exports = app => {
+  const homepageRouter = require("./homepage.routes")
+  app.use("/api", homepageRouter)
+
   const candlesRouter = require("./candle.routes")
   app.use("/api/candles", candlesRouter)
 
